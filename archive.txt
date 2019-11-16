@@ -1,0 +1,17 @@
+def selectEdges(x, y, theShape, axis, change):
+    if str([x, y]) in theShape:
+        if not str([x- 1, y]) in theShape and not str([x, y-1]) in theShape:
+            edges[str([x, y])] = True
+            selectEdges(x+1, y, theShape, "x", 1)
+            return
+        if not str([x + 1, y]) in theShape and not str([x, y-1]) in theShape:
+            selectEdges(x, y+1, theShape, "y", 1)
+            return
+        if not(str([x + 1, y])) in theShape and not str([x, y+1]) in theShape:
+            edges[str([x, y])] = True
+            return
+        if axis == "x":
+            selectEdges(x+change, y, theShape, "x", change)
+        else:
+            selectEdges(x, y+change, theShape, "y", change)
+    
